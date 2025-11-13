@@ -6,6 +6,7 @@ import axios from "axios";
 import { removeUser } from "../utils/userSlice";
 import { removeFeedData } from "../utils/feedSlice";
 import { removeConnection } from "../utils/connectionSlice";
+import { removeRequests } from "../utils/requestSlice";
 
 const NavBar = () => {
   const user = useSelector((state) => state.user);
@@ -19,6 +20,7 @@ const NavBar = () => {
       dispatch(removeUser());
       dispatch(removeFeedData());
       dispatch(removeConnection());
+      dispatch(removeRequests());
       navigate("/login");
     } catch (err) {
       console.log("Error", err);
@@ -61,6 +63,9 @@ const NavBar = () => {
               </li>
               <li>
                 <Link to={"/connections"}>Connections</Link>
+              </li>
+              <li>
+                <Link to={"/requests"}>Requests</Link>
               </li>
               <li>
                 <a onClick={handleLogout}>Logout</a>
